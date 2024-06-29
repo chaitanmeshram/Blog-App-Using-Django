@@ -1,0 +1,43 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Blog App</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+        
+
+
+    </head>
+    <body>
+        <!--Creating card container component -->
+        <div class="Heading">
+            <h1> NarrativeNook</h1>
+        </div>
+        
+        <div classs="container">
+            <div class="row">
+                <div class="leftcolumn">
+                    {% for post in posts reversed %} <!-- Looping through posts and showing the latest on the top -->
+                    <div class="card">
+                        <a style=" text-decoration: none; color:black; " href="/post/{{post.id}}">
+                            <h2>{{post.title}}</h2>
+                            <h3>{{post.created_at}}</h3>
+                            <p>{{post.body|truncatewords:20}}</p>
+    
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+
+    </body>
+
+</html>
+
